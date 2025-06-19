@@ -23,4 +23,7 @@ git push -u origin main
 ```
 <!-- Pull, push, commit, fetch-origin, stashpop, status, diff, branch, add, remote -->
 
+```bash
+git remote set-url origin git@github.com:Fahad-Nathani07/MyTeamApp.git
 
+```
