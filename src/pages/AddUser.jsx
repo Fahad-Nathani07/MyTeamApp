@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext'; // ✅
 
 const AddUser = () => {
+  const { addUser } = useContext(UserContext); // ✅
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,8 +18,8 @@ const AddUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`User added:\nName: ${formData.name}\nEmail: ${formData.email}\nRole: ${formData.role}`);
-    // In real app, send to backend here
+    addUser(formData); // ✅ Add to global context
+    alert('User added!');
     setFormData({ name: '', email: '', role: '' });
   };
 
@@ -46,7 +48,7 @@ const AddUser = () => {
         <input
           type="text"
           name="role"
-          placeholder="Role (e.g. Developer)"
+          placeholder="Role"
           value={formData.role}
           onChange={handleChange}
           className="w-full border rounded p-2"
